@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos - Caprichos Boutique</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #2347bd 0%, #778ae2 50%, #d44242 100%);
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .filter-btn.active {
+            background-color: #d43a3a;
+            color: rgb(242, 242, 243);
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .no-products {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <img src="YO NO TOMO (1).png" alt="logo caprichos boutique" class="w-60 h-20 object-contain" />
+                    
+                </div>
+                
+                <nav class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-black-700 hover:text-blue-700 font-medium transition-colors">Inicio</a>
+                    <a href="products.html" class="text-blue-900 font-medium">Productos</a>
+                    <a href="index.html#ofertas" class="text-black-700 hover:text-blue-700 font-medium transition-colors">Ofertas</a>
+                    <a href="index.html#contacto" class="text-black-700 hover:text-blue-700 font-medium transition-colors">Contacto</a>
+                </nav>
+               <div class="flex items-center space-x-4">
+    <img src="logo.jpg" alt="Logo Caprichos Boutique" class="w-20 h-20 rounded-full shadow-lg object-cover" />
+</div>
+                    </button>
+                    <button class="md:hidden p-2 rounded-full bg-gray-100 text-gray-700">
+                      <img src="logo.jpg" alt="Logo Caprichos Boutique" class="h-8 w-8 rounded-full shadow-lg object-cover mb-6">
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Products Header -->
+   <section class="gradient-bg py-16">
+    <div class="container mx-auto px-4 text-center">
+        <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">Nuestros Productos</h1>
+        <p class="text-white text-lg opacity-90">Descubre nuestra colección completa de ropa americana</p>
+        <!-- Logos de marcas -->
+        <div class="flex flex-wrap justify-center items-center gap-8 mt-8">
+            <img src="nike.png" alt="Nike" class="h-10 w-auto object-contain" />
+            <img src="Adidas-Logo.wine.png" alt="Adidas" class="h-12 w-auto object-contain" />
+            <img src="levis.png" alt="Levi's" class="h-10 w-auto object-contain" />
+            <img src="gap.png" alt="GAP" class="h-14 w-14 object-contain" />
+            <img src="lee.png" alt="lee" class="h-14 w-15 object-contain" />
+            <img src="tommy.png" alt="tommy" class="h-10 w-auto object-contain" />
+             <img src="boss.png" alt="boos" class="h-15 w-12 object-contain" />
+                <img src="rebook.png" alt="rebook" class="h-10 w-auto object-contain" />
+            <!-- Agrega más logos si quieres -->
+        </div>
+    </div>
+</section>
+
+    <!-- Filter Section -->
+    <section class="py-8 bg-white shadow-md">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-wrap gap-4 justify-center">
+                <button class="filter-btn px-6 py-2 rounded-full bg-gray-100 text-gray-700 hover:bg-orange-100 hover:text-orange-600 transition-colors active" data-category="todos">
+                    Todos
+                </button>
+                <button class="filter-btn px-6 py-2 rounded-full bg-gray-100 text-gray-700 hover:bg-teal-100 hover:text-teal-600 transition-colors" data-category="camisetas">
+                   Hombre
+                </button>
+                <button class="filter-btn px-6 py-2 rounded-full bg-gray-100 text-gray-700 hover:bg-orange-100 hover:text-orange-600 transition-colors" data-category="jeans">
+                    Mujer
+                </button>
+                <button class="filter-btn px-6 py-2 rounded-full bg-gray-100 text-gray-700 hover:bg-yellow-100 hover:text-yellow-600 transition-colors" data-category="vestidos">
+                    Niño
+                </button>
+                <button class="filter-btn px-6 py-2 rounded-full bg-gray-100 text-gray-700 hover:bg-purple-100 hover:text-purple-600 transition-colors" data-category="accesorios">
+                    Accesorios
+                </button>
+                <button class="filter-btn px-6 py-2 rounded-full bg-gray-100 text-gray-700 hover:bg-red-100 hover:text-red-600 transition-colors" data-category="ofertas">
+                    Ofertas
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Grid -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div id="products-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                <!-- Products will be loaded here by JavaScript -->
+            </div>
+            
+            <div id="no-products" class="no-products text-center py-16">
+                <div class="w-24 h-24 bg-gray-200 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <svg class="w-12 h-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 12h6m-6-4h6m2 5.291A7.962 7.962 0 0112 15c-2.34 0-4.46.94-6 2.465"></path>
+                    </svg>
+                </div>
+                <h3 class="text-2xl font-semibold text-gray-600 mb-2">No hay productos en esta categoría</h3>
+                <p class="text-gray-500">Prueba con otra categoría o vuelve más tarde</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-2xl font-bold text-orange-400 mb-4">Caprichos Boutique</h3>
+                    <p class="text-gray-300">Tu destino para la moda americana más auténtica y vibrante.</p>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Enlaces Rápidos</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-300 hover:text-orange-400 transition-colors">Inicio</a></li>
+                        <li><a href="products.html" class="text-gray-300 hover:text-orange-400 transition-colors">Productos</a></li>
+                        <li><a href="index.html#ofertas" class="text-gray-300 hover:text-orange-400 transition-colors">Ofertas</a></li>
+                        <li><a href="index.html#contacto" class="text-gray-300 hover:text-orange-400 transition-colors">Contacto</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Categorías</h4>
+                    <ul class="space-y-2">
+                        <li><a href="products.html?categoria=camisetas" class="text-gray-300 hover:text-orange-400 transition-colors">Hombre</a></li>
+                        <li><a href="products.html?categoria=jeans" class="text-gray-300 hover:text-orange-400 transition-colors">Mujer</a></li>
+                        <li><a href="products.html?categoria=vestidos" class="text-gray-300 hover:text-orange-400 transition-colors">Niño</a></li>
+                        <li><a href="products.html?categoria=accesorios" class="text-gray-300 hover:text-orange-400 transition-colors">Accesorios</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                   <h4 class="font-semibold mb-4">Contacto</h4>
+
+    <p class="text-gray-300 mb-2 flex items-center">
+    <!-- Teléfono minimalista -->
+    <svg class="w-5 h-5 mr-2 text-orange-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path d="M22 16.92V19a2 2 0 0 1-2.18 2A19.86 19.86 0 0 1 3 5.18 2 2 0 0 1 5 3h2.09a2 2 0 0 1 2 1.72c.13.81.37 1.6.72 2.34a2 2 0 0 1-.45 2.11l-.27.27a16 16 0 0 0 6.58 6.58l.27-.27a2 2 0 0 1 2.11-.45c.74.35 1.53.59 2.34.72A2 2 0 0 1 22 16.92z"/>
+    </svg>
+    +593 98 398 9863
+</p>
+<p class="text-gray-300 mb-2 flex items-center">
+        <!-- Email SVG -->
+        <svg class="w-5 h-5 mr-2 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12l-4-4-4 4m8 0v6a2 2 0 01-2 2H6a2 2 0 01-2-2v-6"/>
+        </svg>
+        info@caprichosboutique.com
+    </p>
+<p class="text-gray-300 mb-4 flex items-center">
+    <!-- Ubicación minimalista -->
+    <svg class="w-5 h-5 mr-2 text-orange-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path d="M12 21s-6-5.686-6-10A6 6 0 0 1 12 3a6 6 0 0 1 6 8c0 4.314-6 10-6 10z"/>
+        <circle cx="12" cy="9" r="2"/>
+    </svg>
+    Ecuador - Manta - Costa Azul, Diagonal al TUTI
+</p>
+    <div class="flex space-x-4 mt-2">
+    <!-- Facebook -->
+    <a href="https://facebook.com/share/1CbFjiYeet/?mibextid=wwXlfr" target="_blank" rel="noopener" class="hover:text-orange-400">
+        <svg class="w-7 h-7 fill-current text-gray-300 hover:text-orange-400" viewBox="0 0 24 24">
+            <path d="M22.675 0h-21.35C.595 0 0 .592 0 1.326v21.348C0 23.408.595 24 1.326 24h11.495v-9.294H9.691v-3.622h3.13V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.797.143v3.24l-1.918.001c-1.504 0-1.797.715-1.797 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116C23.405 24 24 23.408 24 22.674V1.326C24 .592 23.405 0 22.675 0"/>
+        </svg>
+    </a>
+    <!-- TikTok con usuario -->
+    <a href="https://tiktok.com/@caprichos_boutique.ec?_t=ZM-8zDWBNhkb9Z&_r=1" target="_blank" rel="noopener" class="flex items-center hover:text-orange-400">
+        <svg class="w-7 h-7 fill-current text-gray-300 hover:text-orange-400 mr-2" viewBox="0 0 24 24">
+            <path d="M12.004 2.002h3.197c.022 1.462 1.19 2.646 2.652 2.67v3.197c-1.462-.024-2.63-1.208-2.652-2.67h-1.197v10.799c0 2.209-1.791 4-4 4s-4-1.791-4-4 1.791-4 4-4c.221 0 .438.018.65.052v2.062a1.938 1.938 0 0 0-.65-.114c-1.104 0-2 .896-2 2s.896 2 2 2 2-.896 2-2V2.002z"/>
+        </svg>
+        <span class="text-gray-300 hover:text-orange-400 font-medium">@caprichos_boutique.ec</span>
+    </a>
+</div>
+</div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                <p class="text-gray-400">© 2024 Caprichos Boutique. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Product data
+        const productos = [
+            {
+                id: 1,
+                nombre: "Camiseta Oversize Classic",
+                precio: 29.99,
+                categoria: "camisetas",
+                imagen: "https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/05ba2828-03a3-4edc-88ed-ff10aab9f478.png",
+                alt: "Camiseta básica oversize de algodón americano en color blanco con diseño minimalista",
+                etiqueta: "Nuevo",
+                descripcion: "Algodón 100% americano, comfort garantizado"
+            },
+            {
+                id: 2,
+                nombre: "Jeans Boyfriend Destroyed",
+                precio: 49.99,
+                categoria: "jeans",
+                imagen: "https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/7d250ab0-7324-4a0c-9900-af020b78b6b6.png",
+                alt: "Jeans de corte boyfriend azul claro desgastado con roturas modernas estilo americano",
+                descripcion: "Cómodos y con el mejor estilo streetwear"
+            },
+            {
+                id: 3,
+                nombre: "Vestido Floral Summer",
+                precio: 39.99,
+                categoria: "vestidos",
+                imagen: "https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/5da2cf60-b0e2-4005-8991-547d7358e5e1.png",
+                alt: "Vestido floral midi con estampado tropical y mangas voluminosas estilo verano",
+                etiqueta: "Trending",
+                descripcion: "Perfecto para días soleados y eventos especiales"
+            },
+            {
+                id: 4,
+                nombre: "Camiseta Graphic Tee",
+                precio: 34.99,
+                categoria: "camisetas",
+                imagen: "https://placehold.co/400x500",
+                alt: "Camiseta de algodón con estampado vintage de bandas de rock americanas",
+                descripcion: "Estampado único inspirado en la cultura americana"
+            },
+            {
+                id: 5,
+                nombre: "Jeans Skinny Fit",
+                precio: 45.99,
+                categoria: "jeans",
+                imagen: "https://placehold.co/400x500",
+                alt: "Jeans ajustados color azul oscuro con corte moderno y elástico",
+                etiqueta: "Oferta",
+                descripcion: "Ajuste perfecto y comodidad todo el día"
+            },
+            {
+                id: 6,
+                nombre: "Vestido Cocktail",
+                precio: 59.99,
+                categoria: "vestidos",
+                imagen: "https://placehold.co/400x500",
+                alt: "Vestido elegante para cóctel color negro con detalles de encaje",
+                descripcion: "Perfecto para eventos formales y noches especiales"
+            },
+            {
+                id: 7,
+                nombre: "Gorra Baseball",
+                precio: 24.99,
+                categoria: "accesorios",
+                imagen: "https://placehold.co/400x500",
+                alt: "Gorra de béisbol estilo americano con logo bordado y ajustable",
+                descripcion: "Estilo urbano con el auténtico feeling americano"
+            },
+            {
+                id: 8,
+                nombre: "Bolso Tote",
+                precio: 39.99,
+                categoria: "accesorios",
+                imagen: "https://placehold.co/400x500",
+                alt: "Bolso tote de lona grande con estampado floral y asas largas",
+                etiqueta: "Nuevo",
+                descripcion: "Amplio y perfecto para el día a día"
+            },
+            {
+                id: 9,
+                nombre: "Camiseta Crop Top",
+                precio: 27.99,
+                categoria: "camisetas",
+                imagen: "https://placehold.co/400x500",
+                alt: "Camiseta crop top de manga corta con diseño minimalista en colores pastel",
+                descripcion: "Moderno y fresco para looks casuales"
+            },
+            {
+                id: 10,
+                nombre: "Jeans Mom Fit",
+                precio: 42.99,
+                categoria: "jeans",
+                imagen: "https://placehold.co/400x500",
+                alt: "Jeans estilo mom de tiro alto en color azul medio con lavado vintage",
+                etiqueta: "Oferta",
+                descripcion: "Vintage style con comodidad moderna"
+            },
+            {
+                id: 11,
+                nombre: "Vestido Maxi",
+                precio: 69.99,
+                categoria: "vestidos",
+                imagen: "https://placehold.co/400x500",
+                alt: "Vestido largo fluido con estampado bohemio y escote en V",
+                descripcion: "Elegante y cómodo para cualquier ocasión"
+            },
+            {
+                id: 12,
+                nombre: "Cinturón Cuero",
+                precio: 19.99,
+                categoria: "accesorios",
+                imagen: "https://placehold.co/400x500",
+                alt: "Cinturón de cuero genuino color marrón con hebilla dorada vintage",
+                descripcion: "Accesorio perfecto para completar tu outfit"
+            }
+        ];
+
+        // Filter products function
+        function filtrarProductos(categoria) {
+            const grid = document.getElementById('products-grid');
+            const noProducts = document.getElementById('no-products');
+            
+            // Clear grid
+            grid.innerHTML = '';
+            
+            // Filter products
+            let productosFiltrados;
+            if (categoria === 'todos') {
+                productosFiltrados = productos;
+            } else if (categoria === 'ofertas') {
+                productosFiltrados = productos.filter(producto => producto.etiqueta === 'Oferta');
+            } else {
+                productosFiltrados = productos.filter(producto => producto.categoria === categoria);
+            }
+            
+            // Show no products message if empty
+            if (productosFiltrados.length === 0) {
+                noProducts.style.display = 'block';
+            } else {
+                noProducts.style.display = 'none';
+                
+                // Add products to grid
+                productosFiltrados.forEach((producto, index) => {
+                    const productCard = document.createElement('div');
+                    productCard.className = 'product-card bg-white rounded-xl overflow-hidden shadow-md transition-all duration-300 fade-in';
+                    productCard.style.animationDelay = `${index * 0.1}s`;
+                    
+                    productCard.innerHTML = `
+                        <div class="relative overflow-hidden">
+                            <img src="${producto.imagen}" alt="${producto.alt}" class="w-full h-64 object-cover" onerror="this.style.display='none'">
+                            ${producto.etiqueta ? `<span class="absolute top-4 left-4 ${producto.etiqueta === 'Nuevo' ? 'bg-red-500' : producto.etiqueta === 'Trending' ? 'bg-green-500' : 'bg-orange-500'} text-white px-3 py-1 rounded-full text-sm font-semibold">${producto.etiqueta}</span>` : ''}
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-semibold text-lg text-gray-800 mb-2">${producto.nombre}</h3>
+                            <p class="text-gray-600 mb-4">${producto.descripcion}</p>
+                          <div class="flex justify-between items-center">
+    <span class="text-2xl font-bold text-orange-600">$${producto.precio.toFixed(2)}</span>
+    <a href="https://wa.me/593983989863?text=Hola,%20quiero%20información%20sobre%20${encodeURIComponent(producto.nombre)}.%20Precio:%20$${producto.precio.toFixed(2)}"
+   target="_blank"
+   class="ml-4 flex items-center px-5 py-2 rounded-full bg-gradient-to-r from-green-400 to-green-600 shadow-lg hover:scale-105 hover:shadow-xl transition-all duration-200 font-semibold text-white">
+    <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.198.297-.767.967-.94 1.166-.173.198-.347.223-.644.075-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.372-.025-.521-.075-.149-.669-1.611-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.372-.01-.571-.01-.198 0-.52.075-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.099 3.205 5.077 4.372.711.306 1.263.489 1.695.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.075-.124-.272-.198-.57-.347z"/>
+    </svg>
+    WhatsApp
+</a>
+</div> 
+                        </div>
+                    `;
+                    
+                    grid.appendChild(productCard);
+                });
+            }
+            
+            // Update active filter button
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.dataset.category === categoria) {
+                    btn.classList.add('active');
+                }
+            });
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get category from URL parameter
+            const urlParams = new URLSearchParams(window.location.search);
+            const categoriaURL = urlParams.get('categoria');
+            
+            // Set initial filter
+            let categoriaInicial = 'todos';
+            if (categoriaURL && ['camisetas', 'jeans', 'vestidos', 'accesorios', 'ofertas'].includes(categoriaURL)) {
+                categoriaInicial = categoriaURL;
+            }
+            
+            // Filter products
+            filtrarProductos(categoriaInicial);
+            
+            // Add event listeners to filter buttons
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    filtrarProductos(this.dataset.category);
+                    
+                    // Update URL without reloading page
+                    const url = new URL(window.location);
+                    if (this.dataset.category === 'todos') {
+                        url.searchParams.delete('categoria');
+                    } else {
+                        url.searchParams.set('categoria', this.dataset.category);
+                    }
+                    window.history.replaceState({}, '', url);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+
